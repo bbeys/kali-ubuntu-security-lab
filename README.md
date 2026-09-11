@@ -1,5 +1,3 @@
-
-Readme · MD
 # Home Cybersecurity Lab: Kali Linux + Ubuntu Server
  
 An isolated virtual lab I built to practice network reconnaissance, SSH exploitation, brute-force attack simulation, and log analysis, as part of my prep for TryHackMe's SOC Level 1 path.
@@ -24,21 +22,29 @@ nmap -sV 192.168.6.4
 ```
 Found the open SSH port and service version.
  
+![Nmap scan result](screenshots/nmap-scan.png)
+ 
 **Remote access.** Connected to the target over SSH:
 ```
 ssh beisa@192.168.6.4
 ```
+ 
+![SSH connection](screenshots/ssh-connect.png)
  
 **Brute-force simulation.** Ran Hydra against the SSH service with a password list:
 ```
 hydra -l beisa -P passlist.txt ssh://192.168.6.4
 ```
  
+![Hydra output](screenshots/hydra-output.png)
+ 
 **Log analysis.** Checked the SSH authentication logs on Ubuntu:
 ```
 sudo journalctl -u ssh -n 50
 ```
 The failed login attempts showed up as multiple `Failed password` entries from the same source IP within a few seconds, and the target automatically rate-limited that IP (`srclimit_penalise`). This is the kind of pattern worth recognizing when reviewing authentication logs.
+ 
+![Log analysis](screenshots/journalctl-logs.png)
  
 ## Skills used
  
