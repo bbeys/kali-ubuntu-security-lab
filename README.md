@@ -26,12 +26,12 @@ Found the open SSH port and service version.
  
 **Remote access.** Connected to the target over SSH:
 ```
-ssh <username>@192.168.6.4
+ssh beisa@192.168.6.4
 ```
  
 **Brute-force simulation.** Ran Hydra against the SSH service with a password list:
 ```
-hydra -l <username> -P passlist.txt ssh://192.168.6.4
+hydra -l beisa -P passlist.txt ssh://192.168.6.4
 ```
  
 **Log analysis.** Checked the SSH authentication logs on Ubuntu:
